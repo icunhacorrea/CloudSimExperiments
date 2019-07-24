@@ -1,0 +1,7 @@
+1 Datacenter 1 | host 1  | vms 2 
+
+2 Datacenter 2 | host 2  | vms 4
+
+3 Datacenter 3 | host 3  | vms 
+
+

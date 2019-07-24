@@ -1,0 +1,77 @@
+---
+title: "plottingSchedulers"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+require(dplyr);
+require(data.table);
+require(ggplot2);
+
+options(scipen=999)
+
+```
+
+```{r functions}
+
+readCsv <- function (filename) {
+  file <- NULL;
+  finfo <- file.info(filename);
+  if (!is.na(finfo$size) & (finfo$size >0) & (finfo$isdir==FALSE))
+  {
+    file <- read.csv(filename, header=FALSE, strip.white=TRUE, comment.char = "#", sep=",");
+    names(file) <- c("CloudletID", "Status", "Datacenter", "FileSize", "VmId", "Time", "Finish Time", "Submission Time");
+    file <- file %>% as.data.frame();
+  }
+  file;
+}
+```
+
+```{r main}
+
+#tableQntCl <- readCsv("changeQntCl/resultsQntCl.csv");
+table <- readCsv("outputs/1_cenario/CapacityBased/2048/allCsv.csv");
+
+tableSumarized <- table %>% group_by(Status) %>% summarize(avgTime=mean(Time))
+
+print(tableSumarized);
+
+```
+
+
+```{r per_image, fig.width=6, fig.height=5}
+gp5 <- tableQntCl %>% group_by(Datacenter, qntCloudlets) %>% summarize(avgTime=mean(Time)) %>%
+    ggplot(aes(shape = as.factor(Datacenter), x = qntCloudlets, y = avgTime, colour = as.factor(Datacenter))) +
+    theme_bw(base_size = 14) +
+    scale_colour_brewer(palette = "Dark2") +
+    geom_point(size = 3) +
+    geom_line(size = 1) +
+    scale_x_continuous(breaks=c(128, 256, 512, 1024, 2048)) +
+    ylab("Tempo de execução médio") + 
+    xlab("Quantidade de Cloudlets") +
+    labs(title = "Tempo de execução médio de Cloudlets",
+         subtitle = "Datacenters com e sem migração de carga") +
+    theme(legend.position = "top", legend.direction = "horizontal", legend.background = element_blank(),
+          legend.box.background = element_rect(colour = "black"))
+gp5
+```
+
+```{r per_image, fig.width=6, fig.height=5}
+gp6 <- tableQntCl %>% group_by(Datacenter, qntCloudlets) %>% summarize(avgTime=sum(Time)) %>%
+    ggplot(aes(shape = as.factor(Datacenter), x = qntCloudlets, y = avgTime, colour = as.factor(Datacenter))) +
+    theme_bw(base_size = 14) +
+    scale_colour_brewer(palette = "Paired") +
+    geom_point(size = 3) +
+    geom_line(size = 1) +
+    scale_x_continuous(breaks=c(128, 256, 512, 1024, 2048)) +
+    ylab("Tempo de execução médio") + 
+    xlab("Quantidade de Cloudlets") +
+    labs(title = "Tempo de execução médio de Cloudlets",
+         subtitle = "Datacenters com e sem migração de carga") +
+    theme(legend.position = "top", legend.direction = "horizontal", legend.background = element_blank(),
+          legend.box.background = element_rect(colour = "black"))
+gp6
+```
+
