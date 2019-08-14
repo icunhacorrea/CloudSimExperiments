@@ -1,0 +1,335 @@
+********************** 6 VMs **********************************
+
+		vmList.add(new Vm(
+				0,
+				brokerId,
+				300,
+				1,
+				2048,
+				5000,
+				5000,
+				"XEN",
+				new CloudletSchedulerSpaceShared()
+			));
+		
+		vmList.add(new Vm(
+				1,
+				brokerId,
+				500,
+				1,
+				2048,
+				5000,
+				5000,
+				"XEN",
+				new CloudletSchedulerSpaceShared()
+			));
+		
+		vmList.add(new Vm(
+				2,
+				brokerId,
+				700,
+				1,
+				2048,
+				5000,
+				5000,
+				"XEN",
+				new CloudletSchedulerSpaceShared()
+			));
+		
+		vmList.add(new Vm(
+				3,
+				brokerId,
+				900,
+				1,
+				2048,
+				5000,
+				5000,
+				"XEN",
+				new CloudletSchedulerSpaceShared()
+			));
+		
+		vmList.add(new Vm(
+				4,
+				brokerId,
+				1200,
+				1,
+				2048,
+				5000,
+				5000,
+				"XEN",
+				new CloudletSchedulerSpaceShared()
+			));
+		
+		vmList.add(new Vm(
+				5,
+				brokerId,
+				1400,
+				1,
+				2048,
+				5000,
+				5000,
+				"XEN",
+				new CloudletSchedulerSpaceShared()
+			));
+	}
+
+********************** 9 VMs **********************************
+
+		vmList.add(new Vm(
+				0,
+				brokerId,
+				200,
+				1,
+				2048,
+				5000,
+				5000,
+				"XEN",
+				new CloudletSchedulerSpaceShared()
+			));
+		
+		vmList.add(new Vm(
+				1,
+				brokerId,
+				250,
+				1,
+				2048,
+				5000,
+				5000,
+				"XEN",
+				new CloudletSchedulerSpaceShared()
+			));
+		
+		vmList.add(new Vm(
+				2,
+				brokerId,
+				350,
+				1,
+				2048,
+				5000,
+				5000,
+				"XEN",
+				new CloudletSchedulerSpaceShared()
+			));
+		
+		vmList.add(new Vm(
+				3,
+				brokerId,
+				450,
+				1,
+				2048,
+				5000,
+				5000,
+				"XEN",
+				new CloudletSchedulerSpaceShared()
+			));
+		
+		vmList.add(new Vm(
+				4,
+				brokerId,
+				550,
+				1,
+				2048,
+				5000,
+				5000,
+				"XEN",
+				new CloudletSchedulerSpaceShared()
+			));
+		
+		vmList.add(new Vm(
+				5,
+				brokerId,
+				650,
+				1,
+				2048,
+				5000,
+				5000,
+				"XEN",
+				new CloudletSchedulerSpaceShared()
+			));
+		
+		vmList.add(new Vm(
+				6,
+				brokerId,
+				750,
+				1,
+				2048,
+				5000,
+				5000,
+				"XEN",
+				new CloudletSchedulerSpaceShared()
+			));
+			
+		vmList.add(new Vm(
+				7,
+				brokerId,
+				850,
+				1,
+				2048,
+				5000,
+				5000,
+				"XEN",
+				new CloudletSchedulerSpaceShared()
+			));
+		
+		vmList.add(new Vm(
+				8,
+				brokerId,
+				950,
+				1,
+				2048,
+				5000,
+				5000,
+				"XEN",
+				new CloudletSchedulerSpaceShared()
+			));
+
+********************** 12 VMs **********************************
+
+		vmList.add(new Vm(
+				0,
+				brokerId,
+				950,
+				1,
+				2048,
+				5000,
+				5000,
+				"XEN",
+				new CloudletSchedulerSpaceShared()
+			));
+		
+		vmList.add(new Vm(
+				1,
+				brokerId,
+				850,
+				1,
+				2048,
+				5000,
+				5000,
+				"XEN",
+				new CloudletSchedulerSpaceShared()
+			));
+		
+		vmList.add(new Vm(
+				2,
+				brokerId,
+				750,
+				1,
+				2048,
+				5000,
+				5000,
+				"XEN",
+				new CloudletSchedulerSpaceShared()
+			));
+		
+		vmList.add(new Vm(
+				3,
+				brokerId,
+				650,
+				1,
+				2048,
+				5000,
+				5000,
+				"XEN",
+				new CloudletSchedulerSpaceShared()
+			));
+		
+		vmList.add(new Vm(
+				4,
+				brokerId,
+				550,
+				1,
+				2048,
+				5000,
+				5000,
+				"XEN",
+				new CloudletSchedulerSpaceShared()
+			));
+		
+		vmList.add(new Vm(
+				5,
+				brokerId,
+				450,
+				1,
+				2048,
+				5000,
+				5000,
+				"XEN",
+				new CloudletSchedulerSpaceShared()
+			));
+		
+		vmList.add(new Vm(
+				6,
+				brokerId,
+				350,
+				1,
+				2048,
+				5000,
+				5000,
+				"XEN",
+				new CloudletSchedulerSpaceShared()
+			));
+			
+		vmList.add(new Vm(
+				7,
+				brokerId,
+				250,
+				1,
+				2048,
+				5000,
+				5000,
+				"XEN",
+				new CloudletSchedulerSpaceShared()
+			));
+		
+		vmList.add(new Vm(
+				8,
+				brokerId,
+				200,
+				1,
+				2048,
+				5000,
+				5000,
+				"XEN",
+				new CloudletSchedulerSpaceShared()
+			));
+			
+		vmList.add(new Vm(
+				9,
+				brokerId,
+				200,
+				1,
+				2048,
+				5000,
+				5000,
+				"XEN",
+				new CloudletSchedulerSpaceShared()
+			));
+		
+		vmList.add(new Vm(
+				10,
+				brokerId,
+				200,
+				1,
+				2048,
+				5000,
+				5000,
+				"XEN",
+				new CloudletSchedulerSpaceShared()
+			));
+			
+		vmList.add(new Vm(
+				11,
+				brokerId,
+				200,
+				1,
+				2048,
+				5000,
+				5000,
+				"XEN",
+				new CloudletSchedulerSpaceShared()
+			));
+
+********************** 15 VMs **********************************
+********************** 18 VMs **********************************
+
+

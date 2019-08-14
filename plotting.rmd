@@ -32,7 +32,7 @@ readCsv <- function (filename) {
 ```{r main}
 
 #tableQntCl <- readCsv("changeQntCl/resultsQntCl.csv");
-table <- readCsv("outputs/1_cenario/CapacityBased/2048/allCsv.csv");
+table <- readCsv("outputs/3_cenario/CapacityBased/6000/allCsv.csv");
 
 tableSumarized <- table %>% group_by(Status) %>% summarize(avgTime=mean(Time))
 

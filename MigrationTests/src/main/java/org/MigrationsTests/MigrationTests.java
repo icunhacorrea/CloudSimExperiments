@@ -43,14 +43,13 @@ public class MigrationTests {
 	
 	private static List<Cloudlet> cloudletList = new ArrayList<Cloudlet>();
 	private static List<Vm> vmList = new ArrayList<Vm>();
-	
+
 	public static void main(String args[]) {
 		
 		if (args.length < 10) {
 			Log.printConcatLine("São necessários 10 arquivos de entrada para cada dimensão.");
 		} else {
-			int indexOfFile = 0;
-			
+			int indexOfFile = 9;
 			
 			List<java.io.File> inputs = new ArrayList<java.io.File>();
 			DecimalFormat dft = new DecimalFormat("###.####");
@@ -63,9 +62,9 @@ public class MigrationTests {
 			startTime = System.currentTimeMillis();
 			
 			
-			executeSimulation(inputs.get(indexOfFile), indexOfFile);
-			//executeSimulationLb(inputs.get(indexOfFile), indexOfFile);
+			//executeSimulation(inputs.get(indexOfFile), indexOfFile);
 			//executeSimulationRb(inputs.get(indexOfFile), indexOfFile);
+			executeSimulationLb(inputs.get(indexOfFile), indexOfFile);
 			
 			
 			stopTime = System.currentTimeMillis();
@@ -75,7 +74,7 @@ public class MigrationTests {
 					+ " **********************");
 		}
 	}
-	
+
 	protected static void executeSimulation(java.io.File input, int index) {
 		try {
 			int num_user = 1;
@@ -103,9 +102,8 @@ public class MigrationTests {
  			
  			CloudSim.stopSimulation();
  			
- 			findMakeSpan(finalExecutionResults);
  			writeOutput(finalExecutionResults, "exec" + index + ".csv");
- 			//printCloudletList(finalExecutionResults, datacenter);
+ 			printCloudletList(finalExecutionResults, datacenter.getMigrateCost());
  			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -129,6 +127,8 @@ public class MigrationTests {
  			
  			int brokerId = broker.getId();
  			
+ 			Log.printConcatLine("Id do Broker Aquiii: " + brokerId);
+ 			
  			CreateVmList(brokerId);
  			CreateCloudletList(input, brokerId);
  			
@@ -143,7 +143,7 @@ public class MigrationTests {
  			
  			findMakeSpan(finalExecutionResults);
  			writeOutput(finalExecutionResults, "exec" + index + ".csv");
- 			//printCloudletList(finalExecutionResults, datacenter);
+ 			printCloudletList(finalExecutionResults, datacenter.getMigrateCost());
  			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -181,7 +181,7 @@ public class MigrationTests {
  			
  			findMakeSpan(finalExecutionResults);
  			writeOutput(finalExecutionResults, "exec" + index + ".csv");
- 			//printCloudletList(finalExecutionResults, datacenter);
+ 			printCloudletList(finalExecutionResults, datacenter.getMigrateCost());
  			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -208,11 +208,17 @@ public class MigrationTests {
 		
 		List<Pe> peList0 = new ArrayList<Pe>();
 		List<Pe> peList1 = new ArrayList<Pe>();
+		List<Pe> peList2 = new ArrayList<Pe>();
+		List<Pe> peList3 = new ArrayList<Pe>();
+		List<Pe> peList4 = new ArrayList<Pe>();
 		
 		List<Host> hostList = new ArrayList<Host>();
 		
 		peList0.add(new Pe(0, new PeProvisionerSimple(2000)));
 		peList1.add(new Pe(1, new PeProvisionerSimple(3000)));
+		peList2.add(new Pe(2, new PeProvisionerSimple(2000)));
+		peList3.add(new Pe(3, new PeProvisionerSimple(2000)));
+		peList4.add(new Pe(4, new PeProvisionerSimple(2000)));
 	
 		int ram = 4096; // host memory (MB)
 		long storage = 1000000; // host storage
@@ -239,6 +245,39 @@ public class MigrationTests {
 					new VmSchedulerTimeShared(peList1)
 				)
 			);
+		
+		/*hostList.add(
+				new Host(
+					2,
+					new RamProvisionerSimple(ram),
+					new BwProvisionerSimple(bw),
+					storage,
+					peList2,
+					new VmSchedulerTimeShared(peList2)
+				)
+			);
+		
+		hostList.add(
+				new Host(
+					3,
+					new RamProvisionerSimple(ram),
+					new BwProvisionerSimple(bw),
+					storage,
+					peList3,
+					new VmSchedulerTimeShared(peList3)
+				)
+			);
+		
+		hostList.add(
+				new Host(
+					4,
+					new RamProvisionerSimple(ram),
+					new BwProvisionerSimple(bw),
+					storage,
+					peList4,
+					new VmSchedulerTimeShared(peList4)
+				)
+			);*/
 		
 		String arch = "x86"; // system architecture
 		String os = "Linux"; // operating system
@@ -307,9 +346,9 @@ public class MigrationTests {
 				brokerId,
 				500,
 				1,
-				2048,
+				250,
+				250,
 				5000,
-				500000,
 				"XEN",
 				new CloudletSchedulerSpaceShared()
 			));
@@ -319,9 +358,9 @@ public class MigrationTests {
 				brokerId,
 				1000,
 				1,
-				2048,
+				250,
+				250,
 				5000,
-				500000,
 				"XEN",
 				new CloudletSchedulerSpaceShared()
 			));
@@ -331,9 +370,9 @@ public class MigrationTests {
 				brokerId,
 				1500,
 				1,
-				2048,
+				250,
+				250,
 				5000,
-				500000,
 				"XEN",
 				new CloudletSchedulerSpaceShared()
 			));
@@ -343,12 +382,36 @@ public class MigrationTests {
 				brokerId,
 				2000,
 				1,
-				2048,
+				250,
+				250,
 				5000,
-				500000,
 				"XEN",
 				new CloudletSchedulerSpaceShared()
 			));
+		
+		/*vmList.add(new Vm(
+				4,
+				brokerId,
+				1200,
+				1,
+				250,
+				250,
+				5000,
+				"XEN",
+				new CloudletSchedulerSpaceShared()
+			));
+		
+		vmList.add(new Vm(
+				5,
+				brokerId,
+				1400,
+				1,
+				250,
+				250,
+				5000,
+				"XEN",
+				new CloudletSchedulerSpaceShared()
+			));*/
 	}
 	
 	
@@ -373,7 +436,7 @@ public class MigrationTests {
 	
 	
 	@SuppressWarnings("unused")
-	private static void printCloudletList(List<Cloudlet> list, Datacenter datacenter) {
+	private static void printCloudletList(List<Cloudlet> list, double migrationCost) {
 		// Ordenar cloudlets by vm.
 		Collections.sort(list, new CompareValues());
 		
@@ -415,11 +478,11 @@ public class MigrationTests {
 			}
 		}
 		
-		findMakeSpan(list); 
+		findMakeSpan(list);
 		
 		Log.printConcatLine(" ******** TEMPO TOTAL DE EXECUÇÃO: ", dft.format(totalFinishTime), " ********");
 		Log.printConcatLine(" ******** TEMPO TOTAL DE CPU: ", dft.format(totalCPUTime), " ********");
-		Log.printConcatLine(" ******** CUSTO TOTAL DE MIGRAÇÃO: ", dft.format(datacenter.getMigrateCost()), " ********");
+		Log.printConcatLine(" ******** CUSTO TOTAL DE MIGRAÇÃO: ", dft.format(migrationCost), " ********");
 	}
 	
 	
